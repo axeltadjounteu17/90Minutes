@@ -80,7 +80,7 @@ jobs:
   deploy:
     name: 🚀 Deploy AWS
     needs: [test-backend, build-web]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.AWS_ACCESS_KEY_ID != '' && secrets.AWS_SECRET_ACCESS_KEY != ''
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.AWS_ACCESS_KEY_ID && secrets.AWS_SECRET_ACCESS_KEY
     runs-on: ubuntu-latest
     permissions:
       id-token: write
