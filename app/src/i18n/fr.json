@@ -1,0 +1,143 @@
+{
+  "app": {
+    "name": "90Minutes",
+    "tagline": "Le football, c'est mieux ensemble"
+  },
+  "splash": {
+    "loading": "Chargement..."
+  },
+  "onboarding": {
+    "skip": "Passer",
+    "next": "Suivant",
+    "start": "Commencer",
+    "slide1_title": "Vis le match en direct",
+    "slide1_desc": "Rejoins tes amis dans une room et suis chaque action en temps réel",
+    "slide2_title": "Prédis le score",
+    "slide2_desc": "Fais ta prédiction et gagne des points si tu as raison",
+    "slide3_title": "Réagis ensemble",
+    "slide3_desc": "Partage tes émotions avec les autres fans en temps réel"
+  },
+  "auth": {
+    "title": "Rejoins le Squad",
+    "fan_name": "Ton nom de fan",
+    "email": "Email",
+    "password": "Mot de passe",
+    "login": "Se connecter",
+    "register": "Let's Go !",
+    "already_account": "J'ai déjà un compte",
+    "guest": "Continuer en invité",
+    "error_invalid": "Email ou mot de passe incorrect",
+    "error_exists": "Ce compte existe déjà"
+  },
+  "home": {
+    "live": "EN DIRECT",
+    "upcoming": "À VENIR",
+    "fans_connected": "{{count}} fans connectés",
+    "kickoff_at": "Coup d'envoi à {{time}}"
+  },
+  "room": {
+    "title": "Choisir une room",
+    "available": "ROOMS DISPONIBLES",
+    "join": "Rejoindre",
+    "create": "Créer une room",
+    "room_name": "Nom de la room",
+    "fans": "{{count}} fans",
+    "empty": "Aucune room disponible. Crée la tienne !"
+  },
+  "match": {
+    "live": "LIVE",
+    "minute": "{{min}}'",
+    "halftime": "Mi-temps",
+    "fulltime": "Terminé",
+    "waiting": "En attente",
+    "goal": "BUUUUT !",
+    "card_yellow": "Carton jaune !",
+    "card_red": "Carton rouge !",
+    "substitution": "Changement",
+    "offside": "Hors-jeu",
+    "foul": "Faute",
+    "final_score": "Score final : {{score}}",
+    "ai_narration": "IA Narration",
+    "reconnecting": "Reconnexion..."
+  },
+  "prediction": {
+    "title": "Quel sera le score final ?",
+    "subtitle": "Prédis et gagne jusqu'à 100 points",
+    "lock": "Verrouiller ma prédiction 🔒",
+    "skip": "Passer",
+    "time_remaining": "{{time}} restant",
+    "halftime_title": "Prédis la 2ème mi-temps !",
+    "submitted": "Prédiction enregistrée ✅",
+    "exact": "Score exact ! +100 pts",
+    "correct_winner": "Bon vainqueur ! +30 pts",
+    "correct_diff": "Bonne différence ! +20 pts"
+  },
+  "reaction": {
+    "point_earned": "+1 pt",
+    "cooldown": "Attends un peu..."
+  },
+  "leaderboard": {
+    "title": "CLASSEMENT",
+    "my_room": "Ma Room",
+    "global": "Global",
+    "me": "Moi",
+    "points": "{{count}} pts",
+    "rank_up": "↑ Tu montes !",
+    "rank_down": "↓ Tu descends"
+  },
+  "profile": {
+    "title": "Mon Profil",
+    "edit": "Modifier",
+    "matches_watched": "Matchs",
+    "correct_predictions": "Prédictions correctes",
+    "total_points": "Points",
+    "my_badges": "MES BADGES",
+    "see_all": "Voir tous →"
+  },
+  "badges": {
+    "title": "MES BADGES",
+    "unlocked": "{{count}}/{{total}} débloqués",
+    "sniper": "Sniper",
+    "sniper_desc": "Prédire le score exact",
+    "in_the_zone": "In The Zone",
+    "in_the_zone_desc": "5 réactions dans un match",
+    "champion": "Champion",
+    "champion_desc": "Finir #1 d'une room",
+    "first_blood": "First Blood",
+    "first_blood_desc": "1ère prédiction envoyée",
+    "assidu": "Assidu",
+    "assidu_desc": "3 matchs suivis",
+    "squad_goals": "Squad Goals",
+    "squad_goals_desc": "Rejoindre une room de 5+ fans"
+  },
+  "settings": {
+    "title": "PARAMÈTRES",
+    "account": "COMPTE",
+    "edit_name": "Modifier le nom de fan",
+    "change_password": "Changer le mot de passe",
+    "notifications": "Notifications push",
+    "app": "APPLICATION",
+    "language": "Langue",
+    "sounds": "Sons",
+    "theme": "Thème",
+    "theme_dark": "Sombre",
+    "theme_light": "Clair",
+    "theme_system": "Système",
+    "privacy": "CONFIDENTIALITÉ",
+    "my_data": "Mes données",
+    "delete_account": "Supprimer le compte",
+    "about": "À PROPOS",
+    "version": "Version",
+    "terms": "Conditions d'utilisation",
+    "logout": "Se déconnecter"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "save": "Enregistrer",
+    "back": "Retour"
+  }
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.00001,viewport-fit=cover,user-scalable=no" />
+  <meta name="description" content="90Minutes — Football is better together" />
+  <meta name="theme-color" content="#000000" />
+  <title>90Minutes — Fan Squad</title>
+
+  <!-- Google Fonts: Oswald + Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <style>
+    /* Reset and full viewport */
+    html, body, #root, #root > div {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #000000;
+    }
+    * { box-sizing: border-box; }
+
+    /* Default body fonts and dark background */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: #FFFFFF;
+    }
+
+    /* Force mobile-like viewport on web: center app in a max-width container */
+    #root {
+      max-width: 430px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+    }
+
+    /* Above 430px (desktop), show a dark backdrop around the mobile frame */
+    @media (min-width: 431px) {
+      body {
+        background: #0a0a0a;
+        background-image:
+          radial-gradient(circle at 20% 20%, rgba(255, 153, 0, 0.05), transparent 40%),
+          radial-gradient(circle at 80% 80%, rgba(208, 2, 27, 0.05), transparent 40%);
+      }
+      #root {
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 32px;
+        overflow: hidden;
+        height: 90vh;
+        margin-top: 5vh;
+      }
+    }
+
+    /* Hide scrollbars but keep scrolling */
+    ::-webkit-scrollbar { width: 0; height: 0; display: none; }
+    * { scrollbar-width: none; -ms-overflow-style: none; }
+
+    /* Selection color */
+    ::selection {
+      background: #FF9900;
+      color: #000000;
+    }
+
+    /* Splash screen loader while JS bundle loads */
+    #splash-loader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #000000;
+      z-index: 9999;
+      transition: opacity 0.3s;
+    }
+    #splash-loader.hidden { opacity: 0; pointer-events: none; }
+    .splash-ball { font-size: 64px; animation: bounce 1s infinite; }
+    .splash-name {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: #FFFFFF;
+      margin-top: 16px;
+      letter-spacing: -1px;
+    }
+    .splash-name .min { color: #FF9900; }
+    .splash-dots { margin-top: 24px; color: #999; font-size: 14px; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Splash loader while the JS bundle loads -->
+  <div id="splash-loader">
+    <div class="splash-ball">⚽</div>
+    <div class="splash-name">90<span class="min">Minutes</span></div>
+    <div class="splash-dots">Chargement...</div>
+  </div>
+
+  <div id="root"></div>
+
+  <script>
+    // Hide splash once the bundle is loaded
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var s = document.getElementById('splash-loader');
+        if (s) {
+          s.classList.add('hidden');
+          setTimeout(function () { s.remove(); }, 300);
+        }
+      }, 800);
+    });
+  </script>
+
+  <!-- Expo entry will inject the JS bundle here -->
+</body>
+</html>

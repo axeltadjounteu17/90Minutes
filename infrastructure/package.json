@@ -1,0 +1,22 @@
+{
+  "name": "90minutes-infrastructure",
+  "version": "1.0.0",
+  "bin": {
+    "90minutes": "bin/90minutes.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "cdk": "cdk",
+    "deploy": "cdk deploy --outputs-file ../app/src/constants/aws-outputs.json"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sts": "^3.1042.0",
+    "aws-cdk-lib": "^2.170.0",
+    "constructs": "^10.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "aws-cdk": "^2.170.0",
+    "typescript": "~5.6.0"
+  }
+}

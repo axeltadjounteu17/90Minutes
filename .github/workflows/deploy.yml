@@ -1,0 +1,124 @@
+name: 90Minutes CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  AWS_REGION: us-east-1
+  NODE_VERSION: '20'
+
+jobs:
+  # ─────────────────────────────────────────
+  # 1. Tests Backend (Lambda functions)
+  # ─────────────────────────────────────────
+  test-backend:
+    name: 🧪 Tests Backend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: functions/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: functions
+
+      - name: Run tests
+        run: npm test
+        working-directory: functions
+
+  # ─────────────────────────────────────────
+  # 2. Build Frontend (Expo Web)
+  # ─────────────────────────────────────────
+  build-web:
+    name: 🌐 Build Web
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: app
+
+      - name: Build Expo Web
+        run: npm run build:web
+        working-directory: app
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-dist
+          path: app/dist/
+          retention-days: 7
+
+  # ─────────────────────────────────────────
+  # 3. Deploy to AWS (only on push to main)
+  # ─────────────────────────────────────────
+  deploy:
+    name: 🚀 Deploy AWS
+    needs: [test-backend, build-web]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # Deploy CDK Stack (Lambda + API Gateway + DynamoDB)
+      - name: Install Lambda dependencies
+        run: npm ci
+        working-directory: functions
+
+      - name: Install CDK dependencies
+        run: npm ci
+        working-directory: infrastructure
+
+      - name: CDK Deploy
+        run: npx cdk deploy --require-approval never
+        working-directory: infrastructure
+
+      # Deploy Web to S3
+      - name: Download web artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: web-dist
+          path: app/dist/
+
+      - name: Sync to S3
+        run: |
+          aws s3 sync app/dist/ s3://90minutes-app-1778260936 --delete
+          echo "✅ Web deployed to S3"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*" || echo "⚠️ CloudFront invalidation skipped (no distribution ID)"

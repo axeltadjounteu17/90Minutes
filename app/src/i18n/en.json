@@ -1,0 +1,143 @@
+{
+  "app": {
+    "name": "90Minutes",
+    "tagline": "Football is better together"
+  },
+  "splash": {
+    "loading": "Loading..."
+  },
+  "onboarding": {
+    "skip": "Skip",
+    "next": "Next",
+    "start": "Get Started",
+    "slide1_title": "Live Match Experience",
+    "slide1_desc": "Join your friends in a room and follow every action in real-time",
+    "slide2_title": "Predict the Score",
+    "slide2_desc": "Make your prediction and earn points if you're right",
+    "slide3_title": "React Together",
+    "slide3_desc": "Share your emotions with other fans in real-time"
+  },
+  "auth": {
+    "title": "Join the Squad",
+    "fan_name": "Your fan name",
+    "email": "Email",
+    "password": "Password",
+    "login": "Sign In",
+    "register": "Let's Go!",
+    "already_account": "I already have an account",
+    "guest": "Continue as guest",
+    "error_invalid": "Invalid email or password",
+    "error_exists": "Account already exists"
+  },
+  "home": {
+    "live": "LIVE NOW",
+    "upcoming": "UPCOMING",
+    "fans_connected": "{{count}} fans connected",
+    "kickoff_at": "Kickoff at {{time}}"
+  },
+  "room": {
+    "title": "Choose a Room",
+    "available": "AVAILABLE ROOMS",
+    "join": "Join",
+    "create": "Create Room",
+    "room_name": "Room name",
+    "fans": "{{count}} fans",
+    "empty": "No rooms available. Create yours!"
+  },
+  "match": {
+    "live": "LIVE",
+    "minute": "{{min}}'",
+    "halftime": "Half-time",
+    "fulltime": "Full-time",
+    "waiting": "Waiting",
+    "goal": "GOOOAL!",
+    "card_yellow": "Yellow card!",
+    "card_red": "Red card!",
+    "substitution": "Substitution",
+    "offside": "Offside",
+    "foul": "Foul",
+    "final_score": "Final score: {{score}}",
+    "ai_narration": "AI Narration",
+    "reconnecting": "Reconnecting..."
+  },
+  "prediction": {
+    "title": "What will the final score be?",
+    "subtitle": "Predict and earn up to 100 points",
+    "lock": "Lock my prediction 🔒",
+    "skip": "Skip",
+    "time_remaining": "{{time}} remaining",
+    "halftime_title": "Predict the 2nd half!",
+    "submitted": "Prediction submitted ✅",
+    "exact": "Exact score! +100 pts",
+    "correct_winner": "Correct winner! +30 pts",
+    "correct_diff": "Correct difference! +20 pts"
+  },
+  "reaction": {
+    "point_earned": "+1 pt",
+    "cooldown": "Wait a moment..."
+  },
+  "leaderboard": {
+    "title": "LEADERBOARD",
+    "my_room": "My Room",
+    "global": "Global",
+    "me": "Me",
+    "points": "{{count}} pts",
+    "rank_up": "↑ Moving up!",
+    "rank_down": "↓ Dropping down"
+  },
+  "profile": {
+    "title": "My Profile",
+    "edit": "Edit",
+    "matches_watched": "Matches",
+    "correct_predictions": "Correct Predictions",
+    "total_points": "Points",
+    "my_badges": "MY BADGES",
+    "see_all": "See all →"
+  },
+  "badges": {
+    "title": "MY BADGES",
+    "unlocked": "{{count}}/{{total}} unlocked",
+    "sniper": "Sniper",
+    "sniper_desc": "Predict the exact score",
+    "in_the_zone": "In The Zone",
+    "in_the_zone_desc": "5 reactions in a match",
+    "champion": "Champion",
+    "champion_desc": "Finish #1 in a room",
+    "first_blood": "First Blood",
+    "first_blood_desc": "1st prediction submitted",
+    "assidu": "Dedicated",
+    "assidu_desc": "3 matches followed",
+    "squad_goals": "Squad Goals",
+    "squad_goals_desc": "Join a room with 5+ fans"
+  },
+  "settings": {
+    "title": "SETTINGS",
+    "account": "ACCOUNT",
+    "edit_name": "Edit fan name",
+    "change_password": "Change password",
+    "notifications": "Push notifications",
+    "app": "APP",
+    "language": "Language",
+    "sounds": "Sounds",
+    "theme": "Theme",
+    "theme_dark": "Dark",
+    "theme_light": "Light",
+    "theme_system": "System",
+    "privacy": "PRIVACY",
+    "my_data": "My data",
+    "delete_account": "Delete account",
+    "about": "ABOUT",
+    "version": "Version",
+    "terms": "Terms of service",
+    "logout": "Sign Out"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "back": "Back"
+  }
+}

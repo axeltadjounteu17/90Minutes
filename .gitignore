@@ -1,0 +1,8 @@
+node_modules/
+.env
+.aws/
+cdk.out/
+__pycache__/
+*.pyc
+.expo/
+dist/

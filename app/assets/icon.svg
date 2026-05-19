@@ -1,0 +1,68 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9900"/>
+      <stop offset="100%" stop-color="#FF5500"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="50%" stop-color="#FFC200"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <radialGradient id="liveGlow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#FF9900" stop-opacity="0.25"/>
+      <stop offset="70%" stop-color="#D0021B" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="speedFade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF9900" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FF9900" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FF9900" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" rx="224" fill="#000000"/>
+  
+  <!-- Ambient glow -->
+  <circle cx="512" cy="420" r="380" fill="url(#liveGlow)"/>
+
+  <!-- Speed lines -->
+  <rect x="80" y="320" width="200" height="3" rx="1.5" fill="url(#speedFade)" opacity="0.6"/>
+  <rect x="60" y="380" width="260" height="4" rx="2" fill="url(#speedFade)" opacity="0.8"/>
+  <rect x="100" y="440" width="180" height="3" rx="1.5" fill="url(#speedFade)" opacity="0.5"/>
+  <rect x="70" y="500" width="220" height="3" rx="1.5" fill="url(#speedFade)" opacity="0.4"/>
+
+  <!-- Football -->
+  <circle cx="540" cy="390" r="175" fill="#FFFFFF"/>
+  <!-- Pentagon pattern -->
+  <path d="M540 215 L593 293 L571 375 L509 375 L487 293 Z" fill="#111111"/>
+  <path d="M593 293 L685 327 L664 420 L571 375 Z" fill="#111111"/>
+  <path d="M487 293 L395 327 L416 420 L509 375 Z" fill="#111111"/>
+  <path d="M571 375 L593 468 L540 512 L487 468 L509 375 Z" fill="#111111"/>
+  <path d="M664 420 L642 512 L593 468 L571 375 Z" fill="#111111"/>
+  <path d="M416 420 L438 512 L487 468 L509 375 Z" fill="#111111"/>
+
+  <!-- GOLD STAR at center of the ball -->
+  <path d="M540 330 L552 365 L590 365 L560 387 L570 422 L540 402 L510 422 L520 387 L490 365 L528 365 Z" fill="url(#goldGrad)"/>
+  <!-- Star glow -->
+  <path d="M540 330 L552 365 L590 365 L560 387 L570 422 L540 402 L510 422 L520 387 L490 365 L528 365 Z" fill="#FFD700" opacity="0.3" transform="scale(1.15) translate(-68, -48)"/>
+
+  <!-- "90" bold text -->
+  <text x="512" y="740" font-family="Arial Black, Impact, sans-serif" font-size="230" font-weight="900" fill="url(#orangeGrad)" text-anchor="middle" letter-spacing="-12">90</text>
+
+  <!-- Minute apostrophe -->
+  <text x="645" y="630" font-family="Arial Black, sans-serif" font-size="80" font-weight="900" fill="#FF9900" opacity="0.9">'</text>
+
+  <!-- Live pulse rings -->
+  <circle cx="540" cy="390" r="215" fill="none" stroke="#D0021B" stroke-width="3" opacity="0.4"/>
+  <circle cx="540" cy="390" r="245" fill="none" stroke="#D0021B" stroke-width="2" opacity="0.2"/>
+  <circle cx="540" cy="390" r="275" fill="none" stroke="#D0021B" stroke-width="1" opacity="0.1"/>
+
+  <!-- Live dot -->
+  <circle cx="780" cy="200" r="16" fill="#D0021B"/>
+  <circle cx="780" cy="200" r="26" fill="none" stroke="#D0021B" stroke-width="2" opacity="0.5"/>
+
+  <!-- Bottom accent bar -->
+  <rect x="312" y="810" width="400" height="5" rx="2.5" fill="url(#orangeGrad)" opacity="0.8"/>
+</svg>
