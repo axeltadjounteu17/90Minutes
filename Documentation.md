@@ -31,6 +31,18 @@ Le projet a été pensé pour la production, avec une architecture 100% Serverle
 *   **React Native & Expo Router** : Application Cross-platform (Web, iOS, Android) avec une architecture composable et des animations fluides via Reanimated. Support natif multilingue (FR, EN, DE).
 *   **GitHub Actions (CI/CD)** : Pipeline d'intégration et de déploiement continus qui compile le code et le pousse automatiquement sur S3 lors des fusions.
 
+### 🔒 Sécurité & Plan de Remédiation (Post-Audit)
+Suite à un audit de sécurité ciblant les bonnes pratiques OWASP et la sécurité de l'infrastructure, nous avons mis en œuvre les actions suivantes :
+
+1. **Nettoyage complet des secrets (P0 - RÉSOLU)** :
+   * Les fichiers de configuration sensibles (`aws-outputs.json`, les fichiers `.env` locaux et le fichier de configuration statique temporaire) ont été **définitivement purgés de l'historique Git** à l'aide de `git-filter-repo` pour éviter toute fuite d'endpoints ou d'IDs Cognito.
+   * Tous ces fichiers ont été intégrés dans les règles `.gitignore` globales et des sous-dossiers.
+2. **Authentification & Validation d'identité (P1 - CONCEPTS DE PRODUCTION)** :
+   * Pour assurer la portabilité de la démo web (PWA Expo) sans dépendance lourde lors du hackathon, l'authentification Cognito est actuellement simulée. 
+   * Dans notre schéma de production, un **Lambda Request Authorizer** attaché au WebSocket `$connect` validera le token JWT Cognito. De même, l'API Gateway HTTP validera la signature JWT Cognito pour extraire de manière sécurisée l'identifiant utilisateur (`userId`) lors d'opérations critiques comme `createRoom`, évitant ainsi l'usurpation d'identité.
+3. **Persistance sécurisée des tokens (P1 - PRODUCTION)** :
+   * Migration prévue des jetons d'accès d'un stockage en clair (AsyncStorage) vers `expo-secure-store` pour les environnements de production iOS/Android.
+
 ### 🎮 Comment utiliser la Démo ?
 1. Rendez-vous sur notre lien **CloudFront**.
 2. Entrez votre nom de fan (ex: "Alex").
@@ -65,6 +77,18 @@ The project was built as a production-ready application, featuring a 100% Server
 *   **React Native & Expo Router**: Cross-platform app (Web, iOS, Android) with smooth Reanimated animations and native multi-language support (FR, EN, DE).
 *   **GitHub Actions (CI/CD)**: Continuous integration and deployment pipeline that builds and automatically pushes the codebase to S3 on merge.
 
+### 🔒 Security & Mitigation Plan (Post-Audit)
+Following a security audit targeting OWASP Mobile standards and AWS architecture, we implemented the following steps:
+
+1. **Secrets Clean-up (P0 - RESOLVED)**:
+   * Sensitive configuration files (`aws-outputs.json`, local `.env` files, and temporary config scripts) have been **permanently purged from Git history** using `git-filter-repo` to eliminate potential leaks of infrastructure endpoints or Cognito IDs.
+   * All credentials are now managed locally or through build variables, with updated `.gitignore` rules in place.
+2. **WebSocket & API Gateway Auth (P1 - PRODUCTION DESIGN)**:
+   * To facilitate a zero-dependency web PWA demo for the hackathon, authentication is currently simulated on client-side.
+   * In a production environment, a **Lambda Request Authorizer** on the WebSocket `$connect` endpoint will parse and validate the Cognito ID token. The HTTP API Gateway will also enforce Cognito JWT validation, securing operations like `createRoom` by reading user identity directly from the token signature rather than trusting request payloads.
+3. **Secure Token Storage (P1 - PRODUCTION)**:
+   * Scheduled transition from unencrypted local storage to `expo-secure-store` for production iOS and Android clients.
+
 ### 🎮 How to run the Demo?
 1. Open our **CloudFront** live link.
 2. Enter a Fan Name (e.g., "Alex").
@@ -82,7 +106,7 @@ The project was built as a production-ready application, featuring a 100% Server
 
 Fans treten *Räumen* bei, interagieren in Echtzeit, tippen Ergebnisse und erleben das Spiel, kommentiert von der generativen KI von Amazon.
 
-### ⚙️ Technologien & genutzte AWS-Dienste
+### ⚙️ Technologies & AWS Services Used
 Das Projekt wurde als produktionsreife Anwendung mit einer 100% Serverless-Architektur über **AWS CDK** entwickelt.
 
 #### 1. Künstliche Intelligenz (GenAI)
@@ -98,6 +122,18 @@ Das Projekt wurde als produktionsreife Anwendung mit einer 100% Serverless-Archi
 #### 3. Frontend & DevSecOps
 *   **React Native & Expo Router**: Cross-Platform-App (Web, iOS, Android) mit nativer Mehrsprachigkeit (FR, EN, DE).
 *   **GitHub Actions (CI/CD)**: Automatisierte Tests und Deployments auf S3.
+
+### 🔒 Sicherheit & Behebungsplan (Post-Audit)
+Nach einem Sicherheitsaudit, das auf OWASP Mobile-Best-Practices und der Cloud-Infrastruktur basierte, wurden folgende Maßnahmen ergriffen:
+
+1. **Bereinigung von Geheimnissen (P0 - GELÖST)**:
+   * Sensible Dateien (`aws-outputs.json`, lokale `.env`-Dateien) wurden mittels `git-filter-repo` **dauerhaft aus der Git-Historie entfernt**.
+   * Diese Dateien sind nun in den `.gitignore`-Regeln enthalten.
+2. **WebSocket & API Gateway Auth (P1 - PRODUKTIONSDESIGN)**:
+   * Um eine einfache Web-PWA-Demo für das Hackathon ohne Registrierungsblockaden zu ermöglichen, ist Cognito clientseitig simuliert.
+   * In einer Produktionsumgebung validiert ein **Lambda Request Authorizer** am WebSocket-Verbindungsendpunkt `$connect` den Cognito-JWT-Token.
+3. **Sichere Token-Speicherung (P1 - PRODUKTION)**:
+   * Geplante Migration auf `expo-secure-store` zur verschlüsselten Speicherung von Tokens auf Mobilgeräten.
 
 ### 🎮 Wie nutzt man die Demo?
 1. Öffnen Sie unseren **CloudFront**-Link.
