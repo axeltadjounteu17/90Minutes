@@ -5,3 +5,11 @@
 expo-env.d.ts
 # @end expo-cli
 node_modules
+
+# Secrets
+.env
+aws-outputs.json
+
+# Secrets
+aws-outputs.json
+.env
