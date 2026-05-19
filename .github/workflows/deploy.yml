@@ -36,12 +36,51 @@ jobs:
         working-directory: functions
 
   # ─────────────────────────────────────────
-  # 2. Deploy AWS Infrastructure & Build Web Frontend
+  # 2. Build Frontend (Expo Web)
   # ─────────────────────────────────────────
-  deploy-and-build:
-    name: 🚀 Deploy AWS & Build Web
-    needs: [test-backend]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  build-web:
+    name: 🌐 Build Web
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: app
+
+      - name: Create dummy aws-outputs.json if missing
+        run: |
+          mkdir -p src/constants
+          if [ ! -f src/constants/aws-outputs.json ]; then
+            echo '{"NinetyMinutesStack":{"UserPoolClientId":"","UserPoolId":"","GameStateTableName":"","CloudFrontURL":"","HttpApiEndpoint":"","WebSocketURL":"","PlayersTableName":"","RoomsTableName":"","CloudFrontDistributionId":"","WebSocketCallbackURL":"","Region":"us-east-1"}}' > src/constants/aws-outputs.json
+          fi
+        working-directory: app
+
+      - name: Build Expo Web
+        run: npm run build:web
+        working-directory: app
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-dist
+          path: app/dist/
+          retention-days: 7
+
+  # ─────────────────────────────────────────
+  # 3. Deploy to AWS (only if secrets are configured)
+  # ─────────────────────────────────────────
+  deploy:
+    name: 🚀 Deploy AWS
+    needs: [test-backend, build-web]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.AWS_ACCESS_KEY_ID != '' && secrets.AWS_SECRET_ACCESS_KEY != ''
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -61,7 +100,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      # 1. Deploy CDK Stack (Lambda + API Gateway + DynamoDB)
+      # Deploy CDK Stack (Lambda + API Gateway + DynamoDB)
       - name: Install Lambda dependencies
         run: npm ci
         working-directory: functions
@@ -70,28 +109,24 @@ jobs:
         run: npm ci
         working-directory: infrastructure
 
-      - name: CDK Deploy (Generates outputs)
-        run: npx cdk deploy --require-approval never --outputs-file ../app/src/constants/aws-outputs.json
+      - name: CDK Deploy
+        run: npx cdk deploy --require-approval never
         working-directory: infrastructure
 
-      # 2. Build Expo Web using fresh CDK outputs
-      - name: Install Expo dependencies
-        run: npm ci
-        working-directory: app
+      # Deploy Web to S3
+      - name: Download web artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: web-dist
+          path: app/dist/
 
-      - name: Build Expo Web
-        run: npm run build:web
-        working-directory: app
-
-      # 3. Deploy Web to S3
       - name: Sync to S3
         run: |
           aws s3 sync app/dist/ s3://90minutes-app-1778260936 --delete
           echo "✅ Web deployed to S3"
 
-      # 4. Invalidate CloudFront cache
       - name: Invalidate CloudFront cache
         run: |
           aws cloudfront create-invalidation \
             --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
-            --paths "/*" || echo "⚠️ CloudFront invalidation skipped"
+            --paths "/*" || echo "⚠️ CloudFront invalidation skipped (no distribution ID)"
