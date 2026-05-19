@@ -48,10 +48,13 @@ export function SettingsScreen({ onClose }: { onClose?: () => void }): React.JSX
     })();
   }, []);
 
-  const currentLang = i18n.language === 'en' ? 'English' : 'Français';
+  const currentLang = i18n.language === 'en' ? 'English' : i18n.language === 'de' ? 'Deutsch' : 'Français';
 
   const toggleLanguage = useCallback(async () => {
-    const newLang = i18n.language === 'fr' ? 'en' : 'fr';
+    const order = ['fr', 'en', 'de'];
+    const currentIndex = order.indexOf(i18n.language) !== -1 ? order.indexOf(i18n.language) : 0;
+    const nextIndex = (currentIndex + 1) % order.length;
+    const newLang = order[nextIndex];
     i18n.changeLanguage(newLang);
     await AsyncStorage.setItem('prefs.language', newLang);
   }, [i18n]);

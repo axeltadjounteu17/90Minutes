@@ -1,0 +1,143 @@
+{
+  "app": {
+    "name": "90Minutes",
+    "tagline": "Fußball ist besser zusammen"
+  },
+  "splash": {
+    "loading": "Wird geladen..."
+  },
+  "onboarding": {
+    "skip": "Überspringen",
+    "next": "Weiter",
+    "start": "Loslegen",
+    "slide1_title": "Live Match Erlebnis",
+    "slide1_desc": "Trete einem Raum bei und verfolge jede Aktion in Echtzeit",
+    "slide2_title": "Ergebnis Vorhersagen",
+    "slide2_desc": "Gib deinen Tipp ab und sammle Punkte, wenn du richtig liegst",
+    "slide3_title": "Gemeinsam Reagieren",
+    "slide3_desc": "Teile deine Emotionen mit anderen Fans in Echtzeit"
+  },
+  "auth": {
+    "title": "Tritt dem Squad bei",
+    "fan_name": "Dein Fan-Name",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "login": "Anmelden",
+    "register": "Los geht's!",
+    "already_account": "Ich habe bereits ein Konto",
+    "guest": "Als Gast fortfahren",
+    "error_invalid": "E-Mail oder Passwort ungültig",
+    "error_exists": "Konto existiert bereits"
+  },
+  "home": {
+    "live": "JETZT LIVE",
+    "upcoming": "DEMNÄCHST",
+    "fans_connected": "{{count}} Fans verbunden",
+    "kickoff_at": "Anstoß um {{time}}"
+  },
+  "room": {
+    "title": "Wähle einen Raum",
+    "available": "VERFÜGBARE RÄUME",
+    "join": "Beitreten",
+    "create": "Raum erstellen",
+    "room_name": "Raumname",
+    "fans": "{{count}} Fans",
+    "empty": "Keine Räume verfügbar. Erstelle deinen!"
+  },
+  "match": {
+    "live": "LIVE",
+    "minute": "{{min}}'",
+    "halftime": "Halbzeit",
+    "fulltime": "Spielende",
+    "waiting": "Warten",
+    "goal": "TOOOOR!",
+    "card_yellow": "Gelbe Karte!",
+    "card_red": "Rote Karte!",
+    "substitution": "Auswechslung",
+    "offside": "Abseits",
+    "foul": "Foul",
+    "final_score": "Endergebnis: {{score}}",
+    "ai_narration": "KI-Kommentar",
+    "reconnecting": "Neu verbinden..."
+  },
+  "prediction": {
+    "title": "Wie lautet das Endergebnis?",
+    "subtitle": "Tippe und gewinne bis zu 100 Punkte",
+    "lock": "Meinen Tipp sperren 🔒",
+    "skip": "Überspringen",
+    "time_remaining": "{{time}} verbleibend",
+    "halftime_title": "Tippe die 2. Halbzeit!",
+    "submitted": "Tipp abgegeben ✅",
+    "exact": "Exaktes Ergebnis! +100 Pkt",
+    "correct_winner": "Richtiger Sieger! +30 Pkt",
+    "correct_diff": "Richtige Differenz! +20 Pkt"
+  },
+  "reaction": {
+    "point_earned": "+1 Pkt",
+    "cooldown": "Warte einen Moment..."
+  },
+  "leaderboard": {
+    "title": "RANGLISTE",
+    "my_room": "Mein Raum",
+    "global": "Global",
+    "me": "Ich",
+    "points": "{{count}} Pkt",
+    "rank_up": "↑ Aufgestiegen!",
+    "rank_down": "↓ Abgestiegen"
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "edit": "Bearbeiten",
+    "matches_watched": "Spiele",
+    "correct_predictions": "Richtige Tipps",
+    "total_points": "Punkte",
+    "my_badges": "MEINE ABZEICHEN",
+    "see_all": "Alle ansehen →"
+  },
+  "badges": {
+    "title": "MEINE ABZEICHEN",
+    "unlocked": "{{count}}/{{total}} freigeschaltet",
+    "sniper": "Sniper",
+    "sniper_desc": "Tippe das exakte Ergebnis",
+    "in_the_zone": "In der Zone",
+    "in_the_zone_desc": "5 Reaktionen in einem Spiel",
+    "champion": "Champion",
+    "champion_desc": "Beende als #1 im Raum",
+    "first_blood": "First Blood",
+    "first_blood_desc": "1. Tipp abgegeben",
+    "assidu": "Engagiert",
+    "assidu_desc": "3 Spiele verfolgt",
+    "squad_goals": "Squad Goals",
+    "squad_goals_desc": "Betritt einen Raum mit 5+ Fans"
+  },
+  "settings": {
+    "title": "EINSTELLUNGEN",
+    "account": "KONTO",
+    "edit_name": "Fan-Namen bearbeiten",
+    "change_password": "Passwort ändern",
+    "notifications": "Push-Benachrichtigungen",
+    "app": "APP",
+    "language": "Sprache",
+    "sounds": "Töne",
+    "theme": "Design",
+    "theme_dark": "Dunkel",
+    "theme_light": "Hell",
+    "theme_system": "System",
+    "privacy": "DATENSCHUTZ",
+    "my_data": "Meine Daten",
+    "delete_account": "Konto löschen",
+    "about": "ÜBER",
+    "version": "Version",
+    "terms": "Nutzungsbedingungen",
+    "logout": "Abmelden"
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "error": "Etwas ist schiefgelaufen",
+    "retry": "Erneut versuchen",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "save": "Speichern",
+    "back": "Zurück"
+  }
+}
