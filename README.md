@@ -1,5 +1,8 @@
 # 90Minutes - The Ultimate Live Football Companion App
 
+🏆 **[LIVE DEMO APP (CloudFront)](https://dkpob5pujhskg.cloudfront.net)**  
+📄 **[Download Documentation (PDF)](./Documentation.pdf)**  
+
 *(Scroll down for English 🇬🇧 and German 🇩🇪 versions)*
 
 ## 🇫🇷 Français
