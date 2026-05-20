@@ -20,7 +20,7 @@ exports.handler = async (event) => {
     const username = qs.username || `Fan_${connectionId.slice(-4)}`;
     const matchId = qs.matchId || 'MATCH#DFL-MAT-111111';
 
-    const roomPlayerId = `${roomId}#user#${userId}`;
+    const roomPlayerId = `${roomId}#user#${userId}#${connectionId}`;
     const now = Date.now();
 
     console.log(`[connect] ${username} (${userId}) joining room ${roomId}`);

@@ -148,6 +148,12 @@ export class NinetyMinutesStack extends cdk.Stack {
     // startDemo needs to invoke matchEvent Lambda
     startDemoFn.addEnvironment('MATCH_EVENT_FN_NAME', matchEventFn.functionName);
     matchEventFn.grantInvoke(startDemoFn);
+    
+    // Allow startDemo to invoke itself asynchronously without causing circular dependency
+    startDemoFn.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['lambda:InvokeFunction'],
+      resources: ['*'],
+    }));
 
     // DynamoDB permissions — all Lambdas get read/write on both tables
     const allLambdas = [connectFn, disconnectFn, matchEventFn, predictionFn, reactionFn, broadcastFn, createRoomFn, joinRoomFn, getLeaderboardFn, startDemoFn];

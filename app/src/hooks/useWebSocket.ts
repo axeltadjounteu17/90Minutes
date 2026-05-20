@@ -59,11 +59,15 @@ export function useWebSocket({
   const [status, setStatus] = useState<ConnectionStatus>(ConnectionStatus.DISCONNECTED);
   const [lastEvent, setLastEvent] = useState<unknown>(null);
 
+  const tabSuffix = useRef(Math.random().toString(36).substring(2, 7)).current;
+
   const connect = useCallback(() => {
     if (!enabled || !url) return;
 
-    // Build connection URL with query params
-    const wsUrl = `${url}?roomId=${encodeURIComponent(roomId)}&userId=${encodeURIComponent(userId)}&username=${encodeURIComponent(username)}&matchId=${encodeURIComponent('MATCH#DEMO-001')}`;
+    // Build connection URL with query params, suffixing userId with tabSuffix
+    // to ensure multiple tabs of the same guest user don't overwrite each other in DB.
+    const uniqueUserId = `${userId}_${tabSuffix}`;
+    const wsUrl = `${url}?roomId=${encodeURIComponent(roomId)}&userId=${encodeURIComponent(uniqueUserId)}&username=${encodeURIComponent(username)}&matchId=${encodeURIComponent('MATCH#DEMO-001')}`;
 
     setStatus(ConnectionStatus.CONNECTING);
 
